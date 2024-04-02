@@ -21,7 +21,7 @@ module.exports = {
           model: 'Reviews',
           key: 'id'
         },
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       url: {
         allowNull: false,
