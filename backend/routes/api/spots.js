@@ -265,4 +265,90 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     return res.status(200).json({"message": "Successfully deleted"});
 });
 
+//Get all Reviews by a Spot's id
+router.get('/:spotId/reviews', async (req, res) => {
+    const spotId = req.params.spotId;
+    const allReviews = await Review.findAll({
+        where: {
+            spotId: spotId
+        },
+        raw: true
+    });
+    //Check if spot exists, exit router if not
+    if(allReviews.length < 1) return res.status(404).json({message: "Spot couldn't be found"});
+
+    //iterate through allReviews array to add User and ReviewImages keys
+    for(let i = 0; i < allReviews.length; i++){
+        //add User key to specific review
+        const reviewUser = await User.findOne({
+            where: {
+                id: allReviews[i].userId
+            },
+            raw: true
+        });
+        allReviews[i].User = {
+            id: reviewUser.id,
+            firstName: reviewUser.firstName,
+            lastName: reviewUser.lastName
+        };
+        //add ReviewImages key to specific review
+        const imagesFromReview = await ReviewImage.findAll({
+            where: {
+                reviewId: allReviews[i].id
+            }
+        });
+        allReviews[i].ReviewImages = [];
+        for(let image of imagesFromReview){
+            allReviews[i].ReviewImages.push({
+                id: image.id,
+                url: image.url
+            })
+        }
+    };
+    
+    return res.status(200).json({Reviews: allReviews});
+});
+
+//Create a Review for a Spot based on the Spot's id
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+    const spotId = req.params.spotId;
+    const user = req.user;
+    const { review, stars } = req.body;
+    const currentSpot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    });
+
+    //check if specified spot exists
+    if(!currentSpot) return res.status(404).json({message: "Spot couldn't be found"});
+
+    //check if review already exists
+    const existingReview = await Review.findOne({
+        where: {
+            userId: user.id,
+            spotId: spotId
+        }
+    });
+    if(existingReview) return res.status(500).json({message: "User already has a review for this spot"});
+
+    //check review parameters
+    let errorBody = {
+        message: "Bad Request",
+        errors : {}
+    }
+    if(!review || review.length===0) errorBody.errors.review = "Review text is required";
+    if(!stars || !(stars >= 1 && stars <= 5)) errorBody.errors.stars = "Stars must be an integer from 1 to 5";
+    if(errorBody.errors.review || errorBody.errors.stars) return res.status(400).json(errorBody);
+
+    const createdReview = await Review.create({
+        userId: user.id,
+        spotId: spotId,
+        review: review,
+        stars: stars
+    });
+
+    return res.status(201).json(createdReview);
+});
+
 module.exports = router;
