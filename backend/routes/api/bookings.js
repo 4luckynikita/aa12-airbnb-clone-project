@@ -69,25 +69,29 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     if(startDateJS < new Date()) errorBody.errors.startDate = "startDate cannot be in the past";
     if(startDateJS >= endDateJS) errorBody.errors.endDate = "endDate cannot be on or before startDate";
     if(errorBody.errors.startDate || errorBody.errors.endDate) return res.status(400).json(errorBody);
-    const existingBookingStart = await Booking.findAll({
+    //Existing booking validators
+    const existingBookings = await Booking.findAll({
         where: {
-            spotId: currentBooking.spotId,
-            startDate: startDateJS
+            spotId: currentBooking.spotId
         }
     });
-    const existingBookingEnd = await Booking.findAll({
-        where: {
-            spotId: currentBooking.spotId,
-            endDate: endDateJS
-        }
-    });
+    //remove current booking from existingBookings array
+    for(let i = 0; i < existingBookings.length; i++){
+        if(existingBookings[i].id === currentBooking.id) existingBookings.splice(i, 1);
+    };
+
     let bookingErrorBody = {
         message: "Sorry, this spot is already booked for the specified dates",
-        errors : {}
+        errors: {}
+    };
+
+    for(let booking of existingBookings){
+        const bookingStartDate = new Date(booking.startDate);
+        const bookingEndDate = new Date(booking.endDate);
+        if(startDateJS >= bookingStartDate && startDateJS <= bookingEndDate) bookingErrorBody.errors.startDate = "Start date conflicts with an existing booking";
+        if(endDateJS >= bookingStartDate && endDateJS <= bookingEndDate) bookingErrorBody.errors.endDate = "End date conflicts with an existing booking";
     }
-    if(existingBookingStart.length > 0) bookingErrorBody.errors.startDate = "Start date conflicts with an existing booking";
-    if(existingBookingEnd.length > 0) bookingErrorBody.errors.endDate = "End date conflicts with an existing booking";
-    if(bookingErrorBody.errors.startDate || bookingErrorBody.errors.endDate) return res.status(403).json(bookingErrorBody);
+    if(Object.keys(bookingErrorBody.errors).length > 0) return res.status(403).json(bookingErrorBody);
 
     //if we're here, all is well with the request
     const updatedSpot = await currentBooking.update({

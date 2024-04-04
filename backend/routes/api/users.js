@@ -11,19 +11,29 @@ const validateSignup = [
     check('email')
       .exists({ checkFalsy: true })
       .isEmail()
-      .withMessage('Please provide a valid email.'),
+      .withMessage('Invalid email'),
     check('username')
       .exists({ checkFalsy: true })
       .isLength({ min: 4 })
-      .withMessage('Please provide a username with at least 4 characters.'),
+      .withMessage('Username is required'),
     check('username')
       .not()
       .isEmail()
-      .withMessage('Username cannot be an email.'),
+      .withMessage('Username cannot be an email'),
+      check('firstName')
+      .exists({ checkFalsy: true })
+      .isAlpha()
+      .isLength({ min: 4 , max: 30})
+      .withMessage('First Name is required'),
+    check('lastName')
+      .exists({ checkFalsy: true })
+      .isAlpha()
+      .isLength({ min: 2 , max: 30})
+      .withMessage('Last Name is required'),
     check('password')
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
-      .withMessage('Password must be 6 characters or more.'),
+      .withMessage('Password is required'),
     handleValidationErrors
   ];
 
@@ -78,6 +88,16 @@ router.post(
     async (req, res) => {
       const { firstName, lastName, email, password, username } = req.body;
       const hashedPassword = bcrypt.hashSync(password);
+
+      //Issue 2: missing firstName and lastName - critical, missing properties can break the frontend
+      // let errorBody = {
+      //   message: "Bad Request",
+      //   errors: {}
+      // };
+      // if(!firstName) errorBody.errors.firstName = "First Name is required";
+      // if(!lastName) errorBody.errors.lastName = "Last Name is required";
+      // if(errorBody.errors.firstName || errorBody.errors.lastName) return res.status(500).json(errorBody);
+
       const user = await User.create({ firstName, lastName, email, username, hashedPassword });
   
       const safeUser = {
