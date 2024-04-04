@@ -38,9 +38,56 @@ const validateSpot = [
     handleValidationErrors
 ];
 
+const paramValidator = [
+    check('page').optional().isInt({min:1, max:10}).withMessage("Page must be greater than or equal to 1 and less than 10"),
+
+    check('size').optional().isInt({min:1, max:20}).withMessage("Size must be greater than or equal to 1 and less than 20"),
+
+    check('minLat').isFloat({min:-90, max:90}).optional().withMessage("Minimum latitude is invalid"),
+
+    check('maxLat').isFloat({min:-90, max:90}).optional().withMessage("Maximum latitude is invalid"),
+
+    check('minLng') .isFloat({min:-180, max:180}).optional().withMessage("Maximum longitude is invalid"),
+
+    check('maxLng').isFloat({min:-180, max:180}).optional().withMessage("Minimum longitude is invalid"),
+
+    check('minPrice') .isFloat({min:0}).optional().withMessage("Minimum price must be greater than or equal to 0"),
+
+    check('maxPrice').isFloat({min:0}).optional().withMessage("Maximum price must be greater than or equal to 0"),
+
+    handleValidationErrors
+];
+
 //GET all Spots
-router.get('/', async (req, res) => {
-    const spots = await Spot.findAll({});
+router.get('/', paramValidator, async (req, res) => {
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query; //for query filters and pagination
+    //predefine at min and max values for comparisons lower to work
+    if (!minLat) minLat = -90;
+    if (!maxLat) maxLat = 99999999999;
+    if (!minLng) minLng = -99999999999;
+    if (!maxLng) maxLng = 99999999999;
+    if (!minPrice) minPrice = 0;
+    if (!maxPrice) maxPrice = 99999999999;
+    
+    //define pagination stuff first
+    if (!page || isNaN(parseInt(page))) page = 1;
+    if (!size || isNaN(parseInt(size))) size = 20;
+    const offset = (page - 1) * size; //parseInt not necessary because math does it automatically
+    const limit = parseInt(size);
+
+    //define where object for findAll
+    const whereFiltered = {};
+
+    ///account for both min and max lat, same for min and max lng and min and max price(key only has one value)
+    if (minLat && maxLat) whereFiltered.lat = { [Op.between]: [parseFloat(minLat), parseFloat(maxLat)] };
+    if (minLng && maxLng) whereFiltered.lng = { [Op.between]: [parseFloat(minLng), parseFloat(maxLng)] };
+    if (minPrice !== undefined && maxPrice !== undefined) whereFiltered.price = { [Op.between]: [parseFloat(minPrice), parseFloat(maxPrice)] };
+
+    const spots = await Spot.findAll({
+        where: whereFiltered,
+        limit: limit,
+        offset: offset
+    });
     const listOfSpotsJSON = [];
     spots.forEach((spot) => {
         listOfSpotsJSON.push(spot.toJSON())
@@ -80,8 +127,10 @@ router.get('/', async (req, res) => {
         }
     }
     return res.status(200).json({
-        Spots: listOfSpotsJSON
-    })
+        Spots: listOfSpotsJSON,
+        page: parseInt(page),
+        size: parseInt(size)
+    }); //pagination confirmed working
     
 });
 
