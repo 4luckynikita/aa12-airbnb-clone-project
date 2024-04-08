@@ -463,7 +463,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const startDateJS = new Date(startDate);
     const endDateJS = new Date(endDate);
     if (!currentSpot) return res.status(404).json({ message: "Spot couldn't be found" });
-    if (user.id === currentSpot.ownerId) return res.status(400).json({ message: "You cannot book your own spot!" });
+    if (user.id === currentSpot.ownerId) return res.status(403).json({ message: "You cannot book your own spot!" });
     let errorBody = {
         message: "Bad Request",
         errors: {}

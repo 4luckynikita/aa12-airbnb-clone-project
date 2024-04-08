@@ -59,7 +59,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     const endDateJS = new Date(endDate);
     const currentBooking = await Booking.findByPk(bookingId);
     if(!currentBooking) return res.status(404).json({message: "Booking couldn't be found"});
-    if(user.id !== currentBooking.userId) return res.status(400).json({message: "You must change your own booking"});
+    if(user.id !== currentBooking.userId) return res.status(403).json({message: "You must change your own booking"});
     if(new Date(currentBooking.endDate) < new Date()) return res.status(400).json({message: "Past bookings can't be modified"});
     //^ i tested this, confirmed OK
     let errorBody = {
@@ -116,7 +116,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
 
     //validations
     if(!oldBooking) return res.status(404).json({message: "Booking couldn't be found"});
-    if(oldBooking.userId !== user.id) return res.status(400).json({message: "You can only delete your own bookings"});
+    if(oldBooking.userId !== user.id) return res.status(403).json({message: "You can only delete your own bookings"});
     const startDateJS = new Date(oldBooking.startDate);
     if(startDateJS <= new Date()) return res.status(403).json({message: "Bookings that have been started can't be deleted"});
     //^^tested working
