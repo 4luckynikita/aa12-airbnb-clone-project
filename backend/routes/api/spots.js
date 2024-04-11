@@ -214,7 +214,7 @@ router.get('/:spotId', async (req, res) => {
     }
     else {
         spot.numReviews = 0;
-        spot.avgRating = 'No Ratings';
+        spot.avgStarRating = 'No Ratings';
     }
 
     spot.SpotImages = [];

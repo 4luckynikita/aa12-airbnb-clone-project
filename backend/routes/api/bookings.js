@@ -39,7 +39,7 @@ router.get('/current', requireAuth, async(req,res) => {
         };
         if(previewImages.length >= 1) spotObj.previewImage = previewImages[0].url;
 
-        allBookings[0].Spot = spotObj;
+        allBookings[i].Spot = spotObj;
     }
     
 
