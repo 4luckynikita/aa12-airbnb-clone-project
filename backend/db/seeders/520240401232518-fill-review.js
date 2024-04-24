@@ -19,14 +19,20 @@ module.exports = {
       {
         spotId: 2,
         userId: 3,
-        review: 'The lights were out? Meh.',
+        review: 'A good stay but the price was really high.',
         stars: 2,
       },
       {
         spotId: 3,
         userId: 1,
-        review: 'Walter this is great Walter',
+        review: 'Prime location to enjoy Vegas to its fullest!',
         stars: 5,
+      },
+      {
+        spotId: 4,
+        userId: 3,
+        review: 'The front yard could have been cleaner but a respectable place',
+        stars: 4
       }
     ]);
   },

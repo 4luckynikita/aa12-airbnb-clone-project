@@ -12,15 +12,19 @@ module.exports = {
     await ReviewImage.bulkCreate([
       {
         reviewId: 1,
-        url: 'www.airbnb.com/img1.jpg'
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713776454/BNB4Me/reviews/Screenshot_2024-04-22_at_1.56.25_AM_g7kmi2.png'
       },
       {
         reviewId: 2,
-        url: 'www.airbnb.com/img2.jpg'
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713776128/BNB4Me/reviews/Screenshot_2024-04-22_at_1.54.17_AM_y62rlt.png'
       },
       {
         reviewId: 3,
-        url: 'www.airbnb.com/img3.jpg'
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713776593/BNB4Me/reviews/Screenshot_2024-04-22_at_2.02.31_AM_awnuv0.png'
+      },
+      {
+        reviewId: 4,
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713776638/BNB4Me/reviews/Screenshot_2024-04-22_at_2.03.41_AM_rljlim.png'
       }
     ]);
   },

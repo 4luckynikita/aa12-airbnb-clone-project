@@ -4,6 +4,9 @@ import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import LoginFormPage from './components/LoginFormPage';
 // import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation/Navigation-bonus';
+import HomePage from './components/HomePage/HomePage.jsx';
+import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
+
 import * as sessionActions from './store/session';
 import { Modal } from './context/Modal';
 
@@ -19,7 +22,10 @@ function Layout() {
 
   return (
     <>
-      <Modal/>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet" />
+      <Modal />
       <Navigation isLoaded={isLoaded} />
       {isLoaded && <Outlet />}
     </>
@@ -32,7 +38,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Welcome!</h1>
+        element: <HomePage />
+      },
+      {
+        path: "spots/:spotId",
+        element: <SpotDetails/>
       },
       // {
       //   path: 'login',

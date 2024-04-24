@@ -5,3 +5,42 @@
 .hidden {
   display: none;
 }
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  list-style: none;
+  padding: 0px 0px 15px 0px;
+  
+}
+.navbar-logo {
+  height: 50px;
+}
+.navbar-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button{
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+
+.navbar-icon{
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+}
+
+.nav-a{
+  text-decoration: none;
+  color: rgb(255, 98, 81);
+  font-size: 25px;
+}

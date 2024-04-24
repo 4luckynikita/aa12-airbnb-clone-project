@@ -1,0 +1,34 @@
+.spot-section{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 70px;
+    flex-wrap: wrap;
+}
+.spot-section-upper{
+    display: flex;
+    justify-content: space-between;
+}
+.spotReview {
+    height: 40px
+}
+.spot-section-price {
+    display: flex;
+    align-items: center;
+}
+
+.spot-container-home{
+    width: 550px;
+    padding: 0px 20px;
+}
+.spotImg{
+    width: 550px;
+    height: 450px;
+}
+
+.spotPrice {
+    font-weight: bold;
+}
+.nav-link {
+    text-decoration: none;
+    color: black;
+}

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { BsList } from "react-icons/bs";
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -41,8 +43,9 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle" />
+      <button onClick={toggleMenu} className='menu-button'>
+        <BsList className='navbar-icon'/>
+        <i className="fas fa-user-circle  fa-2xl navbar-icon" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

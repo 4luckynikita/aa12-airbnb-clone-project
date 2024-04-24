@@ -1,1 +1,5 @@
-/* TODO: Add sitewide styles */
+body {
+    background-color: rgb(235, 235, 235);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+}

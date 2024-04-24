@@ -12,17 +12,22 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'www.blahblah.com/img.jpg',
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713742244/BNB4Me/Screenshot_2024-04-21_at_4.26.06_PM_oiairs.png',
         preview: true
       },
       {
         spotId: 2,
-        url: 'www.walterwhite.com/img.jpg',
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713742243/BNB4Me/Screenshot_2024-04-21_at_4.28.06_PM_fwute4.png',
         preview: true
       },
       {
         spotId: 3,
-        url: 'www.open.appacademy.com/img.jpg',
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713742242/BNB4Me/Screenshot_2024-04-21_at_4.29.15_PM_rw5jkh.png',
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: 'https://res.cloudinary.com/dkxfjbynk/image/upload/v1713743286/BNB4Me/Screenshot_2024-04-21_at_4.47.50_PM_sqqrqt.png',
         preview: true
       }
     ]);
