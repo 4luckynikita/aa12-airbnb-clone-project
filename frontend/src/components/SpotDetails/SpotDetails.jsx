@@ -64,8 +64,10 @@ const SpotDetails = () => {
     
     // console.log(reviewsState.length)
     // if(reviewsState.length) console.log(reviewsState)
-    if(currentSpot){
+    // if(currentSpot){
         return (
+            <>
+            {currentSpot && 
             <div className='spot-container' key={spotId}>
                 <div className='spot-details'>
                     <div className='spot-details-upper'>
@@ -116,9 +118,10 @@ const SpotDetails = () => {
                     </div>
                 </div>
             </div>
-    
+            }
+            </>
         )
-    }
+    // }
 }
 
 export default SpotDetails;
