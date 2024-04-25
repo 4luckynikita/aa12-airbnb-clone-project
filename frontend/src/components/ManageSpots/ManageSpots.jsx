@@ -4,8 +4,10 @@ import './ManageSpots.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { BsStarFill } from "react-icons/bs";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import OpenModalButton from '../OpenModalButton/OpenModalButton'
 import { getCurrentUserSpotsThunk } from '../../store/spots';
+import DeleteSpotModal from '../DeleteSpotModal/DeleteSpotModal'
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -44,7 +46,7 @@ const HomePage = () => {
                             <button>Update</button>
                         </NavLink>
                         
-                        <button>Delete</button>
+                        <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteSpotModal spotId={+spot.id} />}/>
 
                     </div>
                 </div>

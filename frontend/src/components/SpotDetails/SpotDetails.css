@@ -83,3 +83,12 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+.post-review-button {
+    background-color: gray;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    color: white;
+    padding: 2px 5px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}

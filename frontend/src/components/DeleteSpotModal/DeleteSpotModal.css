@@ -1,0 +1,43 @@
+.delete-modal-container {
+    border: 4px solid black;
+    text-align: center;
+    width: 400px;
+}
+.delete-modal-container h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 27px;
+}
+.delete-modal-container p {
+    margin: 0px;
+}
+
+.delete-modal-container div {
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.delete-spot-button {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 95%;
+    height: 45px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgb(255, 98, 81);
+    box-shadow: 2px 2px black;
+}
+.keep-spot-button {
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 95%;
+    height: 45px;
+    border: 2px solid black;
+    color: white;
+    background-color: gray;
+    box-shadow: 2px 2px black;
+}

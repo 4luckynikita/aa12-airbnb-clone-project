@@ -18,3 +18,13 @@
     color: white;
 
 }
+
+.update-delete-container OpenModalButton {
+    margin-right: 8px;
+    background-color: gray;
+    padding: 5px 10px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 1px black;
+    color: white;
+
+}

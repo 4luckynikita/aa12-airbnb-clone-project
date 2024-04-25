@@ -108,6 +108,9 @@ const SpotDetails = () => {
                     </div>
                     <div className='spot-reviews-container'>
                     <p className='review-container-lower'><BsStarFill />{reviews()}</p>
+                    <button
+                    className='post-review-button'
+                    >Post Your Review</button>
                     {reviewsArr.map((review) => (
                         <div className='review-container' key={review?.id}>
                             <p className='review-name'>{review?.User?.firstName}</p>

@@ -124,9 +124,10 @@ const CreateSpot = () => {
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
                                 placeholder="City"
+                                className="city-state-input"
                             />
                         </label>
-                        <label>
+                        <label classname='state-label'>
                             <div className="error-container">
                                 <p>State</p>
                                 {errors.state && <p className="error-msg">{errors.state}</p>}
@@ -135,12 +136,12 @@ const CreateSpot = () => {
                                 type="text"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                className="state-input"
                                 placeholder="STATE"
+                                className="city-state-input"
                             />
                         </label>
                     </div>
-                    <div className="lat-lng-container">
+                    {/* <div className="lat-lng-container">
                         <label className='lat-lng-label theleftone'>
                             <p>Latitude</p>
                             <input
@@ -161,7 +162,7 @@ const CreateSpot = () => {
                                 placeholder="Longitude"
                             />
                         </label>
-                    </div>
+                    </div> */}
                     <div className="spot-description-container">
                         <h1>Describe your place to guests</h1>
                         <p>Mention the best features of your space, any special amentities like fast wifi, or parking, and what you love about the neighborhood.</p>

@@ -38,11 +38,15 @@
     color: red;
     padding-left: 6px;
 }
-.city-state-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%
+.city-label {
+    width: 63%;
 }
+.state-label {
+    width: 37%;
+}
+.city-state-input {
+    width: 100%
+} 
 .lat-lng-container {
     display: flex;
     justify-content: space-between;
