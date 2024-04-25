@@ -6,6 +6,9 @@ import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation-bonus';
 import HomePage from './components/HomePage/HomePage.jsx';
 import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
+import CreateSpot from './components/CreateSpot/CreateSpot.jsx';
+import ManageSpots from './components/ManageSpots/ManageSpots.jsx'
+import UpdateSpot from './components/UpdateSpot/UpdateSpot.jsx'
 
 import * as sessionActions from './store/session';
 import { Modal } from './context/Modal';
@@ -44,6 +47,18 @@ const router = createBrowserRouter([
         path: "spots/:spotId",
         element: <SpotDetails/>
       },
+      {
+        path: 'spots/new',
+        element: <CreateSpot />
+     },
+     {
+      path: 'spots/current',
+      element: <ManageSpots />
+     },
+     {
+      path: "spots/:spotId/edit",
+      element: <UpdateSpot />
+     }
       // {
       //   path: 'login',
       //   element: <LoginFormPage />

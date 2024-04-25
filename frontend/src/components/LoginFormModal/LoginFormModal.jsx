@@ -49,7 +49,7 @@ function LoginFormModal() {
               />
             </label>
           </div>
-          <div classname='password-input'>
+          <div className='password-input'>
             <label>
               <input
                 type="password"
@@ -64,7 +64,7 @@ function LoginFormModal() {
         </div>
         {errors.credential && <p>{errors.credential}</p>}
         <div className='button-container'>
-          <button type="submit" className='login-button'>Log In</button>
+          <button type="submit" className='login-button' disabled={credential.length < 4 || password.length < 6}>Log In</button>
           <div></div>
           <button className='demo-user-button' type='demoUser' onClick={demoUserLogIn}>Demo User</button>
         </div>

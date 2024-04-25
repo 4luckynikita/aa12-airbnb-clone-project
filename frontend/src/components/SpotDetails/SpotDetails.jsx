@@ -9,10 +9,9 @@ import './SpotDetails.css';
 
 const SpotDetails = () => {
     const dispatch = useDispatch();
-    const { spotId } = useParams()
+    const { spotId } = useParams();
 
     let spotState = useSelector(state => state.spots)
-    // console.log('spots',spots);
     spotState = Object.values(spotState)
     const currentSpot = spotState.find(spot => spot.id === +spotId)
 
@@ -20,9 +19,14 @@ const SpotDetails = () => {
         dispatch(getAllReviewsThunk(spotId));
         dispatch(getSpotDetails(spotId));
         
+        
+        
     }, [dispatch, spotId]);
 
     //console.log(currentSpot)
+    const handleReserveClick = () => {
+        alert("Feature coming soon!")
+    };
 
     const reviews = () => {
         if (!currentSpot) return null;
@@ -58,11 +62,11 @@ const SpotDetails = () => {
         'December'
     ];
     
-    console.log(reviewsState.length)
-    if(reviewsState.length) console.log(reviewsState)
+    // console.log(reviewsState.length)
+    // if(reviewsState.length) console.log(reviewsState)
     if(currentSpot){
         return (
-            <div className='spot-container' key={`spot${spotId}container`}>
+            <div className='spot-container' key={spotId}>
                 <div className='spot-details'>
                     <div className='spot-details-upper'>
                         <p className='spot-name'>{currentSpot?.name}</p>
@@ -96,14 +100,14 @@ const SpotDetails = () => {
                                     <p className='review-container-upper'><BsStarFill />{reviews()}</p>
                                 </div>
                             </div>
-                            <button className='reserve-button'>Reserve</button>
+                            <button onClick={handleReserveClick} className='reserve-button'>Reserve</button>
     
                         </div>
                     </div>
                     <div className='spot-reviews-container'>
                     <p className='review-container-lower'><BsStarFill />{reviews()}</p>
                     {reviewsArr.map((review) => (
-                        <div className='review-container'>
+                        <div className='review-container' key={review?.id}>
                             <p className='review-name'>{review?.User?.firstName}</p>
                             <p className='review-date'>{`${months[new Date(review?.createdAt).getMonth()]} ${new Date(review?.createdAt).getFullYear()}`}</p>
                             <p className='review-body'>{review?.review}</p>

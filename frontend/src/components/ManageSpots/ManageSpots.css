@@ -1,0 +1,20 @@
+.title-h1 {
+    margin-left: 100px;
+}
+.new-spot-button button {
+    margin-left: 100px;
+    background-color: gray;
+    padding: 5px 10px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 1px black;
+    color: white;
+}
+.update-delete-container button {
+    margin-right: 8px;
+    background-color: gray;
+    padding: 5px 10px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 1px black;
+    color: white;
+
+}
