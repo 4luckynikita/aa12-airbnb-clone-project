@@ -146,6 +146,9 @@
     margin-top: 0;
     margin-bottom: 10px;
 }
+.spot-images-container input{
+    margin-bottom:20px;
+}
 .image-input-boxes input {
     width: 100%;
     border: 2px solid black;
