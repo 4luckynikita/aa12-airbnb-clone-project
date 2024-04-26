@@ -267,7 +267,6 @@ const CreateSpot = () => {
                     <div className="submit-button-container">
                         <button className="submit-button"
                             type="submit"
-                            onClick={(e) => e.console.log('button was clicked')}
                             disabled={Object.values(errors).length > 0}
                         >Create a Spot</button>
                     </div>
