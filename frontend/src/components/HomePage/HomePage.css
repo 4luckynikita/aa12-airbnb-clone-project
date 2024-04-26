@@ -1,7 +1,7 @@
 .spot-section{
     display: flex;
     justify-content: space-between;
-    padding: 40px 70px;
+    padding: 40px 150px;
     flex-wrap: wrap;
 }
 .spot-section-upper{
@@ -31,4 +31,23 @@
 .nav-link {
     text-decoration: none;
     color: black;
+}
+.spotImg-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgba(255, 98, 81, 0.698);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin-top: 30px;
+    width: 80%;
+}
+.spotImg-container:hover .title-tooltip{
+    visibility: visible;
 }

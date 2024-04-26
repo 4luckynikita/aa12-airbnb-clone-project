@@ -75,7 +75,7 @@ const UpdateSpot = () => {
         if (!state) errorsObj.state = 'State is required'
         if (!country) errorsObj.country = 'Country is required'
         if (!name) errorsObj.name = 'Name is required'
-        if (!description) errorsObj.description = 'Description needs a minimum of 30 characters'
+        if (!description || description.length < 30) errorsObj.description = 'Description needs a minimum of 30 characters'
         if (!price) errorsObj.price = 'Price is required'
         
 
@@ -150,9 +150,10 @@ const UpdateSpot = () => {
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
                                 placeholder="City"
+                                className="city-state-input"
                             />
                         </label>
-                        <label>
+                        <label className='state-label'>
                             <div className="error-container">
                                 <p>State</p>
                                 {errors.state && <p className="error-msg">{errors.state}</p>}
@@ -161,8 +162,8 @@ const UpdateSpot = () => {
                                 type="text"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                className="state-input"
                                 placeholder="STATE"
+                                className="city-state-input"
                             />
                         </label>
                     </div>

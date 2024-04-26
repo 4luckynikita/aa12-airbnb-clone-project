@@ -1,0 +1,32 @@
+.stars-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.review-modal-container {
+    border: 4px solid black;
+    text-align: center;
+    padding: 10px 20px;
+}
+.review-modal-container h1 {
+    margin: 0;
+    font-size: 27px;
+}
+.review-modal-container textarea {
+    width: 350px;
+    height: 135px;
+}
+.review-modal-container p {
+    color: red;
+    margin: 0;
+    font-size: 14px;
+}
+.review-modal-container button {
+    width: 360px;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 98, 81);
+    border: 2px solid black;
+    box-shadow: 4px 4px  black;
+    color: white;
+}

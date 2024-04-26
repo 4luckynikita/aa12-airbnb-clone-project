@@ -43,6 +43,15 @@
     justify-content: space-between;
     width: 100%
 }
+.city-label {
+    width: 60%;
+}
+.state-label {
+    width: 35%;
+}
+.city-state-input {
+    width: 100%
+} 
 .lat-lng-container {
     display: flex;
     justify-content: space-between;

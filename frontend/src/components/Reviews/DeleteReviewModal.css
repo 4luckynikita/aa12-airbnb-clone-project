@@ -1,0 +1,26 @@
+.delete-modal-container {
+    text-align: center;
+    border: 4px solid black;
+    padding: 10px 20px;
+    width: 350px;
+}
+    
+.yes-button {
+    width: 100%;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    height: 50px;
+    margin-top: 10px;
+    background-color: rgb(255, 98, 81);
+}
+.no-button {
+    width: 100%;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: gray;
+}

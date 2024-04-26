@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
-    <>
+    <div className='logged-in-menu'>
       <button onClick={toggleMenu} className='menu-button'>
         <BsList className='navbar-icon'/>
         <i className="fas fa-user-circle  fa-2xl navbar-icon" />
@@ -77,7 +77,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 

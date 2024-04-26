@@ -20,7 +20,10 @@ const HomePage = () => {
             {Object.values(spotState).map((spot) => (
                 <div className='spot-container-home' key={spot.id}>
                     <NavLink to={`/spots/${spot.id}`} className='nav-link'>
-                        <img className='spotImg' src={spot.previewImage} alt={`Preview image for ${spot.name}`} />
+                        <div className='spotImg-container'>
+                            <img className='spotImg' src={spot.previewImage} alt={`Preview image for ${spot.name}`} />
+                            <span className='title-tooltip'>{spot.name}</span>
+                        </div>
                         <div className='spot-section-upper'>
                             <p className='spotLocation'>{`${spot.city}, ${spot.state}`}</p>
                             <div className='spot-section-rating'>

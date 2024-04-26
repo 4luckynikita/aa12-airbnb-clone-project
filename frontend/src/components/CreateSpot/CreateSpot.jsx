@@ -42,14 +42,19 @@ const CreateSpot = () => {
         if (!state) errorsObj.state = 'State is required'
         if (!country) errorsObj.country = 'Country is required'
         if (!name) errorsObj.name = 'Name is required'
-        if (!description) errorsObj.description = 'Description needs a minimum of 30 characters'
+        if (!description || description.length < 30) errorsObj.description = 'Description needs a minimum of 30 characters'
         if (!price) errorsObj.price = 'Price is required'
         if (!mainImage) errorsObj.mainImage = 'Preview image is required'
-        //ADD!!! Image URL must end in .png, .jpg, or .jpeg
+        if(mainImage.length && (mainImage.substr(mainImage.length - 4) != '.png' || mainImage.substr(mainImage.length - 4) != '.png' || mainImage.substr(mainImage.length - 5) != '.jpeg')) errorsObj.mainImage = 'Image URL needs to end in png or jpg (or jpeg)';
+        if(spotImageOne.length && (spotImageOne.substr(spotImageOne.length - 4) != '.png' || spotImageOne.substr(spotImageOne.length - 4) != '.png' || spotImageOne.substr(spotImageOne.length - 5) != '.jpeg')) errorsObj.spotImageOne = 'Image URL needs to end in png or jpg (or jpeg)';
+        if(spotImageTwo.length && (spotImageTwo.substr(spotImageTwo.length - 4) != '.png' || spotImageTwo.substr(spotImageTwo.length - 4) != '.png' || spotImageTwo.substr(spotImageTwo.length - 5) != '.jpeg')) errorsObj.spotImageTwo = 'Image URL needs to end in png or jpg (or jpeg)';
+        if(spotImageThree.length && (spotImageThree.substr(spotImageThree.length - 4) != '.png' || spotImageThree.substr(spotImageThree.length - 4) != '.png' || spotImageThree.substr(spotImageThree.length - 5) != '.jpeg')) errorsObj.spotImageThree = 'Image URL needs to end in png or jpg (or jpeg)';
+        if(spotImageFour.length && (spotImageFour.substr(spotImageFour.length - 4) != '.png' || spotImageFour.substr(spotImageFour.length - 4) != '.png' || spotImageFour.substr(spotImageFour.length - 5) != '.jpeg')) errorsObj.spotImageFour = 'Image URL needs to end in png or jpg (or jpeg)';
+
 
         setErrors(errorsObj)
 
-    }, [address, city, state, country, name, description, price, mainImage, currentUser, navigate])
+    }, [address, city, state, country, name, description, price, mainImage, currentUser, spotImageOne, spotImageTwo, spotImageThree, spotImageFour, navigate])
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -127,7 +132,7 @@ const CreateSpot = () => {
                                 className="city-state-input"
                             />
                         </label>
-                        <label classname='state-label'>
+                        <label className='state-label'>
                             <div className="error-container">
                                 <p>State</p>
                                 {errors.state && <p className="error-msg">{errors.state}</p>}
@@ -213,8 +218,9 @@ const CreateSpot = () => {
                                 onChange={(e) => setMainImage(e.target.value)}
                                 placeholder="Preview Image URL"
                             />
+                            {errors.mainImage && <p className="error-msg">{errors.mainImage}</p>}
                         </label>
-                        {errors.mainImage && <p className="error-msg">{errors.mainImage}</p>}
+                        
                         <div className="image-input-boxes">
                             <label>
                                 <input
@@ -223,6 +229,7 @@ const CreateSpot = () => {
                                     onChange={(e) => setSpotImageOne(e.target.value)}
                                     placeholder="Image URL"
                                 />
+                                {errors.spotImageOne && <p className="error-msg">{errors.spotImageOne}</p>}
                             </label>
                             <label>
                                 <input
@@ -232,6 +239,7 @@ const CreateSpot = () => {
                                     placeholder="Image URL"
                                 />
                             </label>
+                            {errors.spotImageTwo && <p className="error-msg">{errors.spotImageTwo}</p>}
                             <label>
 
                                 <input
@@ -240,6 +248,7 @@ const CreateSpot = () => {
                                     onChange={(e) => setSpotImageThree(e.target.value)}
                                     placeholder="Image URL"
                                 />
+                                {errors.spotImageThree && <p className="error-msg">{errors.spotImageThree}</p>}
                             </label>
                             <label>
                                 <input
@@ -248,7 +257,9 @@ const CreateSpot = () => {
                                     onChange={(e) => setSpotImageFour(e.target.value)}
                                     placeholder="Image URL"
                                 />
+                                {errors.spotImageFour && <p className="error-msg">{errors.spotImageFour}</p>}
                             </label>
+
                         </div>
                     </div>
                     <div className="submit-button-container">

@@ -52,7 +52,17 @@
     width: 50%;
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: flex-end;
+}
+.button-container-upper-left h3{
+    font-size: 20px;
+}
+.button-container-upper-left p {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+.button-container-upper-right {
+    font-size: 16px;
 }
 .reserve-button {
     height: 50%;
@@ -83,7 +93,7 @@
     margin-top: 0;
     margin-bottom: 0;
 }
-.post-review-button {
+.spot-reviews-container button {
     background-color: gray;
     border: 2px solid black;
     box-shadow: 2px 2px black;
