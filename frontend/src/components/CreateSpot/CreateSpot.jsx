@@ -45,6 +45,7 @@ const CreateSpot = () => {
         if (!description || description.length < 30) errorsObj.description = 'Description needs a minimum of 30 characters'
         if (!price) errorsObj.price = 'Price is required'
         if (!mainImage) errorsObj.mainImage = 'Preview image is required'
+        //hello
         if(mainImage.length && !(mainImage.endsWith('.png') || mainImage.endsWith('.jpg') || mainImage.endsWith('.jpeg'))) errorsObj.mainImage = 'Image URL needs to end in png or jpg (or jpeg)';
         if(spotImageOne.length && !(spotImageOne.endsWith('.png') || spotImageOne.endsWith('.jpg') || spotImageOne.endsWith('.jpeg'))) errorsObj.spotImageOne = 'Image URL needs to end in png or jpg (or jpeg)';
         if(spotImageTwo.length && !(spotImageTwo.endsWith('.png') || spotImageTwo.endsWith('.jpg') || spotImageTwo.endsWith('.jpeg'))) errorsObj.spotImageTwo = 'Image URL needs to end in png or jpg (or jpeg)';
@@ -78,8 +79,9 @@ const CreateSpot = () => {
             spotImageFour
         }
         const createdSpot = await dispatch(createASpotThunk(newSpot, newImages))
-        dispatch(getSpotDetails(createdSpot))
-        navigate(`/spots/${createdSpot.id}`)
+        dispatch(getSpotDetails(createdSpot));
+        navigate(`/spots/${createdSpot.id}`);
+        window.location.reload();
     }
 
 
