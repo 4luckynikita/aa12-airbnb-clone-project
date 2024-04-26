@@ -2,12 +2,10 @@ import './DeleteSpotModal.css'
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { deleteSpotThunk } from "../../store/spots";
-import { useNavigate } from 'react-router-dom';
 import { getCurrentUserSpotsThunk } from '../../store/spots';
 
 
 const DeleteSpotModal = ({ spotId }) => {
-    const navigate = useNavigate()
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
