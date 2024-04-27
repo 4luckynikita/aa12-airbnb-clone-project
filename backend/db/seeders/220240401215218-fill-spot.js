@@ -38,7 +38,7 @@ module.exports = {
         ownerId: 3,
         address: '7129 Silver Ridge Peak St',
         city: 'Las Vegas',
-        state: 'California',
+        state: 'Nevada',
         country: 'USA',
         lat: 36.29135774763068,
         lng: -115.3178767,

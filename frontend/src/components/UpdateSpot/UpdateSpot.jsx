@@ -281,7 +281,7 @@ const UpdateSpot = () => {
                         <button className="submit-button"
                             type="submit"
                             disabled={Object.values(errors).length > 0}
-                        >Create a Spot</button>
+                        >Update Spot</button>
                     </div>
                 </form>
             </div>
