@@ -29,7 +29,7 @@
 .login-button {
     width: 308px;
     height: 30px;
-    margin-top: 18px;
+    margin-top: 10px;
     background-color: white;
     border-color: lightgray;
     box-shadow: 3px 3px 3px lightgray;
@@ -41,4 +41,10 @@
     margin-top: 15px;
     margin-bottom: 20px;
     background-color: white;
+}
+.error-mesg {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 0px;
 }

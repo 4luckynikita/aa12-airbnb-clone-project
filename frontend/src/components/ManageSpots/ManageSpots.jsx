@@ -33,12 +33,13 @@ const HomePage = () => {
                         <div className='spot-section-upper'>
                             <p className='spotLocation'>{`${spot.city}, ${spot.state}`}</p>
                             <div className='spot-section-rating'>
-                                <p className='spotReview'><BsStarFill />{spot.avgRating}</p>
+                            {spot.avgRating !== 'No Ratings' && <p className='spotReview'><BsStarFill />{spot.avgRating}</p>}
+                                {spot.avgRating === 'No Ratings' && <p className='spotReview'><BsStarFill />New</p>}
                             </div>
                         </div>
                         <div className='spot-section-price'>
                             <p className='spotPrice'>{`$${spot.price}`}</p>
-                            <p> night</p>
+                            <p className='spotPrice2'>/night</p>
                         </div>
                     </NavLink>
                     <div className='update-delete-container'>

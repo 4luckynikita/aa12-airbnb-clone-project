@@ -9,6 +9,11 @@
     box-shadow: 3px 3px 1px black;
     color: white;
 }
+
+.update-delete-container {
+    margin-bottom: 10px;
+}
+
 .update-delete-container button {
     margin-right: 8px;
     background-color: gray;
@@ -27,4 +32,17 @@
     box-shadow: 3px 3px 1px black;
     color: white;
 
+}
+
+.spotPrice {
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 0px;
+}
+.spotPrice2 {
+    font-size: 17px;
+    margin-top: 0px;
+}
+.spotLocation {
+    font-size: 17px;
 }

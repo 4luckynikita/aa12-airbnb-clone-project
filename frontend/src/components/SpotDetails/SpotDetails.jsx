@@ -117,6 +117,7 @@ const SpotDetails = () => {
                                 className="post-review-button"
                                 modalComponent={<CreateReviewModal spot={currentSpot} />}
                                 buttonText="Post Your Review!" />}
+                                {!reviewsArr.length && <p>Be the first to post a review!</p>}
                             {reviewsArr.map((review) => (
                                 <div className='review-container' key={review?.id}>
                                     <p className='review-name'>{review?.User?.firstName}</p>

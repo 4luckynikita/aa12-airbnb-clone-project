@@ -1,8 +1,13 @@
+.outermost-spot-div {
+    display: flex;
+    justify-content: center;
+}
+
 .spot-section{
     display: flex;
-    justify-content: space-between;
     padding: 40px 150px;
     flex-wrap: wrap;
+    max-width: 1361px;
 }
 .spot-section-upper{
     display: flex;
@@ -17,20 +22,29 @@
 }
 
 .spot-container-home{
-    width: 550px;
+    width: 300px;
     padding: 0px 20px;
 }
 .spotImg{
-    width: 550px;
-    height: 450px;
+    width: 300px;
+    height: 250px;
 }
 
 .spotPrice {
     font-weight: bold;
+    font-size: 17px;
+    margin-top: 0px;
+}
+.spotPrice2 {
+    font-size: 17px;
+    margin-top: 0px;
 }
 .nav-link {
     text-decoration: none;
     color: black;
+}
+.spotLocation {
+    font-size: 17px;
 }
 .spotImg-container {
     position: relative;
@@ -47,6 +61,7 @@
     padding: 5px;
     margin-top: 30px;
     width: 80%;
+    font-size: 17px;
 }
 .spotImg-container:hover .title-tooltip{
     visibility: visible;

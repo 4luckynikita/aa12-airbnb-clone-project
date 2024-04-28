@@ -77,6 +77,7 @@ const UpdateSpot = () => {
         if (!name) errorsObj.name = 'Name is required'
         if (!description || description.length < 30) errorsObj.description = 'Description needs a minimum of 30 characters'
         if (!price) errorsObj.price = 'Price is required'
+        if (price && (!isNaN(price) === false || price.length < 1)) errorsObj.price = 'Price must be an integer'
         
 
         setErrors(errorsObj)
@@ -214,7 +215,7 @@ const UpdateSpot = () => {
                         {errors.name && <p className="error-msg">{errors.name}</p>}
                     </div>
                     <div className="spot-price-container">
-                        <h1>Set a base price for our spot</h1>
+                        <h1>Set a base price for your spot</h1>
                         <p> Competitive pricing can help your listing stand out and rank higher in search results.</p>
                         <label>
                             <div className='price-input-container'>

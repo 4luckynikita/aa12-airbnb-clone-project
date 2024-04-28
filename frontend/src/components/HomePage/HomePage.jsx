@@ -16,6 +16,7 @@ const HomePage = () => {
     }, [dispatch]);
 
     return (
+        <div className='outermost-spot-div'>
         <div className='spot-section'>
             {Object.values(spotState).map((spot) => (
                 <div className='spot-container-home' key={spot.id}>
@@ -33,11 +34,12 @@ const HomePage = () => {
                         </div>
                         <div className='spot-section-price'>
                             <p className='spotPrice'>{`$${spot.price}`}</p>
-                            <p> night</p>
+                            <p className='spotPrice2'>/night</p>
                         </div>
                     </NavLink>
                 </div>
             ))}
+        </div>
         </div>
     )
 }

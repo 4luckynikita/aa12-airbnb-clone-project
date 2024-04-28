@@ -9,9 +9,13 @@ function LoginFormModal() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
+  //const [buttonDisable, setButtonDisable] = useState(true);
+
   const { closeModal } = useModal();
   const navigate = useNavigate();
+  const errorText = errors === "Invalid credentials" ? "The provided credentials were invalid" : null;
+
 
   const demoUserLogIn = async () => {
     const response = await dispatch(sessionActions.login({ "credential": 'Demo-lition', "password": 'password' }))
@@ -21,18 +25,19 @@ function LoginFormModal() {
     }
   }
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors({});
+    setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
+        const bootyVar = await res.json()
+        setErrors(bootyVar.message);
+        //console.log(errors);
       });
   };
+
 
   return (
     <div className='login-form'>
@@ -65,7 +70,7 @@ function LoginFormModal() {
             </label>
           </div>
         </div>
-        {errors.credential && <p>{errors.credential}</p>}
+        {errors && <p className="error-mesg">{errorText || errors}</p>}
         <div className='button-container'>
           <button type="submit" className='login-button' disabled={credential.length < 4 || password.length < 6}>Log In</button>
           <div></div>

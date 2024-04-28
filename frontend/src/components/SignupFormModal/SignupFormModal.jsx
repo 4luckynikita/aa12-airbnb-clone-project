@@ -41,6 +41,7 @@ function SignupFormModal() {
     });
   };
 
+  const allowSubmit = email && username && firstName && lastName && password && confirmPassword && (username.length >= 4) && (password.length >= 6);
   return (
     <div className='signup-modal'>
       <h1>Sign Up</h1>
@@ -111,7 +112,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={!allowSubmit}>Sign Up</button>
       </form>
     </div>
   );
